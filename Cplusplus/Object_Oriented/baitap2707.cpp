@@ -107,6 +107,76 @@ void Employee::Add_Work(){
 double Employee::print_Salary(){
     return Salary;
 }
+/*
+5. Create a class called 'Matrix' containing constructor that initializes the number of rows 
+and number of columns of a new Matrix object. The Matrix class has the following 
+information:
+    1.number of rows of matrix
+    2 number of columns of matrix
+    3 - elements of matrix in the form of 2D array
+The Matrix class has methods for each of the following:
+    1 - get the number of rows
+    2 - get the number of columns
+    3 - set the elements of the matrix at given position (i,j)
+    4 - adding two matrices. If the matrices are not addable, "Matrices cannot be added" 
+        will be displayed.
+    5 - multiplying the two matrices
+*/
+class Matrix{
+   
+};
+/*
+6. Write a program that has variables to store Car data like; CarModel, CarName, CarPrice
+and CarOwner. The program should include functions to assign user defined values to
+the above mentioned variable and a display function to show the values. Write a main
+that calls these functions. Now write another runner class that declares three Car
+objects and displays the data of all three.
+*/
+class Car{
+    private:
+        string Car_Model;
+        string Car_Name;
+        string Car_Price;
+        string Car_Owner;
+    public:
+        //Car(string , string , string , string );
+        void get_inf();
+        void display_inf();
+        void get_infs(int );
+        void display_infs(int );
+};
+
+void Car::get_inf(){
+    cout<<"\n\t_____Input your Information_____";
+    cout<<"\nInput Car_Model:";getline(cin,Car_Model);
+    cout<<"\nInput Car_Name:";getline(cin,Car_Name);
+    cout<<"\nInput Car_Price:";getline(cin,Car_Price);
+    cout<<"\nInput Car_Owner:";getline(cin,Car_Owner);
+}
+void Car::display_inf(){
+    cout<<"\n\t_____Output your Information_____";
+    cout<<"\nCar Model:"<<Car_Model;
+    cout<<"\nCar Name:"<<Car_Name;
+    cout<<"\nCar Price:"<<Car_Price;
+    cout<<"\nCar Owner:"<<Car_Owner;
+}
+void Car::get_infs(int a){
+    for(int i =0;i<a;i++){
+        get_inf();
+    }
+}
+void Car::display_infs(int a){
+    for(int i=0;i<a;i++){
+        display_inf();
+    }
+}
+/*
+7. A Student is an object in a university management System. Analyze the concept and
+identify the data members that a Student class should have. Also analyze the
+behavior of student in a university management System and identify the methods
+that should be included in Student class. 
+*/
+class University_Managment_Sys{};
 int main (){
     /*
     cout<<"\n\t_________________Area and Perimeter of Triangle____________________";
@@ -125,8 +195,6 @@ int main (){
     cout<<"\nInput value of real and image number :";cin>>real>>image;
     Complex_Number obj3=Complex_Number(real,image);
     obj3.print_complex();
-    */
-    
     cout<<"\n\t__________________Employee___________________";
     string name,id;
     int hour;
@@ -140,7 +208,9 @@ int main (){
     Employee obj4;
     obj4.get_inf(name,id,hour);
     obj4.print_inf();
-
-
+    */
+   Car no1;
+   no1.get_infs(2);
+   no1.display_infs(2);
     return 0;
 }
