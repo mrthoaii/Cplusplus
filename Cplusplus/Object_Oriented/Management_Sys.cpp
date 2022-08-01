@@ -7,6 +7,7 @@ that should be included in Student class.
 
 #include<iostream>
 #include<string>
+#include<cstring>
 using namespace std;
 class Student {
     private :
@@ -54,22 +55,29 @@ void Student::display_inf(){
     cout<<"\nYour address :"<<address;
     cout<<"\nYour hobby :"<<hobby;
 }
-//Different
-void get_infs(Student *a,int &n){
-    int i=0;
-    while (i<n){
 
+//Different
+void get_infs(Student a[],int &n,int &i){
+    while (i<n){
         a[i].get_inf();
         i++;
     }
     //n++;
 }
-void display_infs(Student *a,int &n){
+void display_infs(Student a[],int &n){
     int i=0;
     while (i<n){
         a[i].display_inf();
         i++;
     }
+}
+void delete_member(Student a[],int &n){
+    int i =0;
+    while (i<n){
+        //if (strcmp(a[i].name,x)==0){
+
+        }
+    //}
 }
 int main(){
 cout<<"\n\t________MENU________";
@@ -77,9 +85,9 @@ cout<<"\n1.Input information.";
 cout<<"\n2.Display Information.";
 cout<<"\n3.Exit.";
 int limit=0;
-cout<<"\nNhap gioi han :";cin>>limit; 
-Student *obj1;
-obj1=new Student[limit];
+//cout<<"\nNhap gioi han :";cin>>limit; 
+Student obj1[50];
+
 int i =0;
 while (true){
     int choice=0;
@@ -87,7 +95,8 @@ while (true){
     cin.ignore();
     switch(choice){
         case 1:{
-            get_infs(obj1,limit);
+            limit+=1;
+            get_infs(obj1,limit,i);
             break;
         }
         case 2:{
@@ -103,6 +112,6 @@ while (true){
         break;
     }
 }
-delete []obj1;
+
     return 0;
 }

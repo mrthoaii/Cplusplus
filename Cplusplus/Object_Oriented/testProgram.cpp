@@ -55,9 +55,10 @@ void Student::display_inf(){
     cout<<"\nYour hobby :"<<hobby;
 }
 //Different
-void get_infs(Student *a,int &n,int &i){
-    n++;
+void get_infs(Student *a,int &n){
+    int i=0;
     while (i<n){
+
         a[i].get_inf();
         i++;
     }
@@ -76,7 +77,7 @@ cout<<"\n1.Input information.";
 cout<<"\n2.Display Information.";
 cout<<"\n3.Exit.";
 int limit=0;
-//cout<<"\nNhap gioi han :";cin>>limit; 
+cout<<"\nNhap gioi han :";cin>>limit; 
 Student *obj1;
 obj1=new Student[limit];
 int i =0;
@@ -86,7 +87,7 @@ while (true){
     cin.ignore();
     switch(choice){
         case 1:{
-            get_infs(obj1,limit,i);
+            get_infs(obj1,limit);
             break;
         }
         case 2:{
