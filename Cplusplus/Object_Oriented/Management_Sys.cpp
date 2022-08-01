@@ -18,15 +18,13 @@ class Student {
         string hobby;
         int age;
     public:
-        Student();
         void set_inf(string , string , string , string , string , int );
-        void get_inf();
+        void add_inf();
         void display_inf();
+        void check_member(Student [] ,string ,int &);
+        void delete_member(Student a[],int &,string );
        
 };
-Student::Student(){
-    cout<<"\n\t________MANAGEMENT SYSTEM________ ";
-}
 void Student::set_inf(string a, string b, string c, string d, string e, int f){
     name=a;
     id=b;
@@ -35,7 +33,7 @@ void Student::set_inf(string a, string b, string c, string d, string e, int f){
     hobby=e;
     age=f;
 }
-void Student::get_inf(){
+void Student::add_inf(){
     cout<<"\n\t_____Input Your Information_____";
     cin.ignore();
     cout<<"\nInput your name :";getline(cin,name);
@@ -55,11 +53,27 @@ void Student::display_inf(){
     cout<<"\nYour address :"<<address;
     cout<<"\nYour hobby :"<<hobby;
 }
+void Student::check_member(Student a[],string b,int &n){
+    for(int i =0;i<n;i++)
+    {
+        int var=a[i].name.compare(b);
+        //if (a[i].name == b){
+        if (var==0){
+            Student temp;
+            for(int j=i+1;j<n;j++){
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+            n--;
+    }
+    }
+}
 
 //Different
-void get_infs(Student a[],int &n,int &i){
+void add_infs(Student a[],int &n,int &i){
     while (i<n){
-        a[i].get_inf();
+        a[i].add_inf();
         i++;
     }
     //n++;
@@ -71,21 +85,21 @@ void display_infs(Student a[],int &n){
         i++;
     }
 }
-void delete_member(Student a[],int &n){
-    int i =0;
-    while (i<n){
-        //if (strcmp(a[i].name,x)==0){
-
-        }
-    //}
+void delete_members(Student a[],string x,int &n){
+   for(int i=0;i<n;i++)
+   {
+    a[i].check_member(a,x,n);
+   }
 }
 int main(){
-cout<<"\n\t________MENU________";
-cout<<"\n1.Input information.";
-cout<<"\n2.Display Information.";
-cout<<"\n3.Exit.";
+cout<<"\t\t|__________________________________|";
+cout<<"\n\t\t|_______________MENU_______________|";
+cout<<"\n\t\t|1.INPUT YOUR INFORMATION..";
+cout<<"\n\t\t|2.DISPLAY YOUR INFORMATION.";
+cout<<"\n\t\t|3.DELETE INFORMATION.";
+cout<<"\n\t\t|4.EXIT.";
+cout<<"\n\t\t|__________________________________|";
 int limit=0;
-//cout<<"\nNhap gioi han :";cin>>limit; 
 Student obj1[50];
 
 int i =0;
@@ -96,7 +110,7 @@ while (true){
     switch(choice){
         case 1:{
             limit+=1;
-            get_infs(obj1,limit,i);
+            add_infs(obj1,limit,i);
             break;
         }
         case 2:{
@@ -104,6 +118,12 @@ while (true){
             break;
         }
         case 3:{
+            string x;
+            cout<<"\nNhap ten ban muon xoa thong tin :";getline(cin,x);
+            delete_members(obj1,x,limit);
+            break;
+        }
+        case 4:{
             cout<<"\nSEE YOU SOON.";
             exit(0);
         }
